@@ -2,7 +2,8 @@
 A scuffed calculator app made in c++ using [Raylib](https://www.raylib.com/) for learning purposes.
 
 ## Note
-Build system is premake
+Build system is premake<br>
+Tested only on windows with Visual Studio 2022<br>
 
 # Warning
 This was made so that I could force myself to code something after not having coded anything in over 3 months. This was made in about four hours so the code is really bad, I won't recommend reading through it. There is probably a better way to do every single thing I have written in this. <br>
