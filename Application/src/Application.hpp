@@ -1,0 +1,34 @@
+#pragma once
+
+#include "raylib.h"
+
+#include "Button.hpp"
+
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <iostream>
+
+class Application {
+public:
+	Application(int32_t winWidth, int32_t winHeight, std::string winTitle);
+	~Application();
+
+	void handleEvents();
+	void update();
+	void render();
+
+	void eval(std::string btnValue);
+	void calculate(std::string op);
+
+	inline const bool& isRunning() const { return m_IsRunning; }
+
+private:
+	int32_t m_Width, m_Height;
+	std::string m_Title, m_DisplayText;
+	Rectangle m_DisplayBox;
+	bool m_IsRunning;
+
+	std::vector<Button> m_Buttons;
+
+};

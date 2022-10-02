@@ -1,0 +1,57 @@
+bin
+bin-int
+*.exe
+*.dll
+*.lib
+*.so
+*.a
+*.o
+
+*.html
+*.js
+*.mjs
+*.wasm
+*.css
+
+Makefile
+
+.vscode
+
+# Visual Studio clutter
+_ReSharper*
+*.sdf
+*.suo
+*.dir
+*.vcxproj*
+*.sln
+.vs
+CMakeSettings.json
+Win32
+x64
+Debug
+Release
+MinSizeRel
+RelWithDebInfo
+*.opensdf
+
+# Xcode clutter
+GLFW.build
+GLFW.xcodeproj
+
+# macOS clutter
+.DS_Store
+
+# Ninja generator clutter
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log
+
+# CMake clutter
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
+cmake_install.cmake
+cmake_uninstall.cmake
