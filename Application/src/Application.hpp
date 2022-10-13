@@ -18,10 +18,14 @@ public:
 	void update();
 	void render();
 
-	void eval(std::string btnValue);
-	void calculate(std::string op);
-
 	inline const bool& isRunning() const { return m_IsRunning; }
+
+private:
+	void eval(const std::string& btnValue);
+	void calculate(const std::string& op);
+
+	void handleMouse();
+	void handleKeyboard();
 
 private:
 	int32_t m_Width, m_Height;

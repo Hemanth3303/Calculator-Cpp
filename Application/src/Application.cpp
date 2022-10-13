@@ -22,9 +22,10 @@ Application::Application(int32_t winWidth, int32_t winHeight, std::string winTit
 	//zero
 	m_Buttons.emplace_back(20, 580, "0");
 
-	//+ and -
-	m_Buttons.emplace_back(120, 580, "+");
-	m_Buttons.emplace_back(220, 580, "-");
+	//+, - and .
+	m_Buttons.emplace_back(120, 580, ".");
+	m_Buttons.emplace_back(220, 580, "+");
+	m_Buttons.emplace_back(310, 580, "-");
 
 	//Clear, *, / and =
 	m_Buttons.emplace_back(310, 280, "C");
@@ -40,18 +41,8 @@ Application::~Application() {
 }
 
 void Application::handleEvents() {
-	for (auto& button : m_Buttons) {
-		if (GetMouseX() > button.getX() && GetMouseX() < button.getX() + button.getSize() &&
-			GetMouseY() > button.getY() && GetMouseY() < button.getY() + button.getSize()) {
-			//std::cout << "collision with button: " << button.getName() << "\n";
-			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-				button.onClick();
-			}
-			else if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-				eval(button.onRelease());
-			}
-		}
-	}
+	handleMouse();
+	handleKeyboard();
 }
 
 void Application::update() {
@@ -74,7 +65,7 @@ void Application::render() {
 	EndDrawing();
 }
 
-void Application::eval(std::string btnValue) {
+void Application::eval(const std::string& btnValue) {
 	if (btnValue == "CE") {
 		m_DisplayText = "";
 	}
@@ -102,7 +93,7 @@ void Application::eval(std::string btnValue) {
 	}
 }
 
-void Application::calculate(std::string op) {
+void Application::calculate(const std::string& op) {
 	std::string lstr = m_DisplayText.substr(0, m_DisplayText.find(op));
 	std::string rstr = m_DisplayText.substr(m_DisplayText.find(op) + 1, m_DisplayText.length());
 
@@ -129,4 +120,23 @@ void Application::calculate(std::string op) {
 	}
 
 	m_DisplayText = result!=INT_MIN?std::to_string(result):"MATH ERROR";
+}
+
+void Application::handleMouse() {
+	for (auto& button : m_Buttons) {
+		if (GetMouseX() > button.getX() && GetMouseX() < button.getX() + button.getSize() &&
+			GetMouseY() > button.getY() && GetMouseY() < button.getY() + button.getSize()) {
+			//std::cout << "collision with button: " << button.getName() << "\n";
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+				button.onClick();
+			}
+			else if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+				eval(button.onRelease());
+			}
+		}
+	}
+}
+
+void Application::handleKeyboard() {
+	
 }
