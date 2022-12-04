@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <climits>
 #include <iostream>
 
 class Application {

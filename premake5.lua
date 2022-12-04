@@ -61,7 +61,8 @@ project "raylib"
 		links { "winmm", "kernel32", "opengl32", "gdi32" }
 				
 	filter "system:linux"
-		links {"pthread", "GL", "m", "dl", "rt", "X11"}
+		links { "pthread", "GL", "m", "dl", "rt", "X11" }
+		defines { "_POSIX_C_SOURCE=199309L" }
 
 	filter{}
 	
